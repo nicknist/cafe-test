@@ -18,10 +18,10 @@ class MakeReservationForm extends Component {
   render() {
     return (
       <div className='res-form'>
-        <input name='name' placeholder='Name' onChange={(e) => this.changeInput(e.target.name, e.target.value)}/>
-        <input type='date' name='date' placeholder='date' onChange={(e) => this.changeInput(e.target.name, e.target.value)}/>
-        <input type='time' name='time' placeholder='time' onChange={(e) => this.changeInput(e.target.name, e.target.value)} />
-        <input name='guestNumber' type='number' placeholder='Number of Guests' onChange={(e) => this.changeInput(e.target.name, e.target.value)} />
+        <input id='name' name='name' placeholder='Name' onChange={(e) => this.changeInput(e.target.name, e.target.value)}/>
+        <input id='date' type='date' name='date' placeholder='date' onChange={(e) => this.changeInput(e.target.name, e.target.value)}/>
+        <input id='time' type='time' name='time' placeholder='time' onChange={(e) => this.changeInput(e.target.name, e.target.value)} />
+        <input id='guestNumber' name='guestNumber' type='number' placeholder='Number of Guests' onChange={(e) => this.changeInput(e.target.name, e.target.value)} />
         <button onClick={() => this.props.addReservation(this.state)}>Make Reservation</button>
       </div>
     )

@@ -5,23 +5,27 @@ exports[`MakeReservationForm should match the snapshot 1`] = `
   className="res-form"
 >
   <input
+    id="name"
     name="name"
     onChange={[Function]}
     placeholder="Name"
   />
   <input
+    id="date"
     name="date"
     onChange={[Function]}
     placeholder="date"
     type="date"
   />
   <input
+    id="time"
     name="time"
     onChange={[Function]}
     placeholder="time"
     type="time"
   />
   <input
+    id="guestNumber"
     name="guestNumber"
     onChange={[Function]}
     placeholder="Number of Guests"
