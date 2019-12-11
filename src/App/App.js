@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DisplayContainer from '../DisplayContainer/DisplayContainer';
 import MakeReservationForm from '../MakeReservationForm/MakeReservationForm';
-import { postReservation } from '../apiCalls';
+import { postReservation, getReservations, deleteReservationFromServer } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -14,7 +14,8 @@ class App extends Component {
   }
 
   addReservation = (newReservation) => {
-    postReservation(newReservation);
+    postReservation(newReservation)
+      .catch(err => console.log(err));
     let newRes = {...newReservation}
     newRes.idNumber = this.state.idNumber;
     let newID = this.state.idNumber + 1
@@ -25,21 +26,17 @@ class App extends Component {
   }
 
   deleteReservation = (reservation) => {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    fetch(`http://localhost:3001/api/v1/reservations/${reservation.id}`, options)
-      .then(res => res.json())
+    deleteReservationFromServer(reservation)
       .then(data => console.log(data))
       .catch(err => console.log(err))
+    let index = this.state.reservations.indexOf(reservation);
+    let copyRes = [...this.state.reservations];
+    copyRes.splice(index, 1);
+    this.setState({ reservations: copyRes })
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/reservations')
-        .then(res => res.json())
+    getReservations()
         .then(data => this.setState({ reservations: data }))
         .catch(err => console.log(err))
   }
