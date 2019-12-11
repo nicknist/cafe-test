@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import DisplayContainer from '../DisplayContainer/DisplayContainer';
 import MakeReservationForm from '../MakeReservationForm/MakeReservationForm';
+import { postReservation } from '../apiCalls';
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
   }
 
   addReservation = (newReservation) => {
-    this.postReservation(newReservation);
+    postReservation(newReservation);
     let newRes = {...newReservation}
     newRes.idNumber = this.state.idNumber;
     let newID = this.state.idNumber + 1
@@ -21,26 +22,6 @@ class App extends Component {
       reservations: [...this.state.reservations, newRes],
       idNumber: newID
     })
-  }
-
-  postReservation = (newReservation) => {
-    let newRes = {
-      name: newReservation.name,
-      date: newReservation.date,
-      time: newReservation.time,
-      number: newReservation.guestNumber
-    }
-    const options = {
-      method: 'POST',
-      body: JSON.stringify(newRes),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-    fetch('http://localhost:3001/api/v1/reservations', options)
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
   }
 
   deleteReservation = (reservation) => {
