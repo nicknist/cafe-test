@@ -26,7 +26,12 @@ describe('DisplayContainer', () => {
     wrapper = shallow(<DisplayContainer reservations={mockReservations}/>);
   })
 
-  it('should match the snapshot', () => {
+  it('should match the snapshot when loaded', () => {
     expect(wrapper).toMatchSnapshot();
+  })
+
+  it('should be loading when no reservations have been loaded', () => {
+    let unLoaded = shallow(<DisplayContainer reservations={[]}/>);
+    expect(unLoaded).toMatchSnapshot();
   })
 })

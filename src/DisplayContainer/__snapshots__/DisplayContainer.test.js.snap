@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DisplayContainer should match the snapshot 1`] = `
+exports[`DisplayContainer should be loading when no reservations have been loaded 1`] = `
+<h1>
+  Loading...
+</h1>
+`;
+
+exports[`DisplayContainer should match the snapshot when loaded 1`] = `
 <div
   className="resy-container"
 >
