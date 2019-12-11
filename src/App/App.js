@@ -7,8 +7,19 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      reservations: []
+      reservations: [],
+      idNumber: 10
     }
+  }
+
+  addReservation = (newReservation) => {
+    let newRes = {...newReservation}
+    newRes.idNumber = this.state.idNumber;
+    let newID = this.state.idNumber + 1
+    this.setState({
+      reservations: [...this.state.reservations, newRes],
+      idNumber: newID
+    })
   }
 
   componentDidMount() {
@@ -26,7 +37,7 @@ class App extends Component {
         </header>
         <main>
           <div className='resy-form'>
-            <MakeReservationForm />
+            <MakeReservationForm addReservation={this.addReservation}/>
           </div>
           <DisplayContainer className='resy-container' reservations={this.state.reservations}/>
         </main>
