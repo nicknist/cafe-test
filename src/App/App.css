@@ -17,3 +17,25 @@
   font-family: 'Pacifico', cursive;
   font-size: 50px;
 }
+
+.single-res {
+  color: teal;
+  background-color: white;
+  border: 2px solid teal;
+  margin: 15px;
+  padding: 10px;
+}
+
+.resy-container {
+  display: flex;
+  flex-flow: wrap;
+}
+
+button {
+  background-color: teal;
+  color: white;
+}
+
+input {
+  
+}
