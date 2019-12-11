@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { shallow } from 'enzyme';
+import { getReservations } from '../apiCalls';
 
 describe('App', () => {
   let wrapper;

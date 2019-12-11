@@ -28,4 +28,56 @@ describe('MakeReservationForm', () => {
 
     expect(wrapper.state('name')).toEqual('Uncle Robbie');
   })
+
+  it('should change the name when the input is updated', () => {
+    let mockEvent = {
+      target: {
+        name: 'Ben',
+        value: 'Change'
+      }
+    }
+    wrapper.instance().changeInput = jest.fn()
+    wrapper.find('#name').simulate('change', mockEvent);
+
+    expect(wrapper.instance().changeInput).toHaveBeenCalledWith('Ben', 'Change');
+  })
+
+  it('should change the date when input is updated', () => {
+    let mockEvent = {
+      target: {
+        name: 'Date',
+        value: 'December 3rd'
+      }
+    }
+    wrapper.instance().changeInput = jest.fn();
+    wrapper.find('#date').simulate('change', mockEvent);
+
+    expect(wrapper.instance().changeInput).toHaveBeenCalledWith('Date', 'December 3rd');
+  })
+
+  it('should change the time when input is updated', () => {
+    let mockEvent = {
+      target: {
+        name: 'time',
+        value: 'none'
+      }
+    }
+    wrapper.instance().changeInput = jest.fn();
+    wrapper.find('#time').simulate('change', mockEvent);
+
+    expect(wrapper.instance().changeInput).toHaveBeenCalledWith('time', 'none')
+  })
+
+  it('should change the guestNumber when the input is updated', () => {
+    let mockEvent = {
+      target: {
+        name: 'guestNumber',
+        value: 10
+      }
+    }
+    wrapper.instance().changeInput = jest.fn();
+    wrapper.find('#guestNumber').simulate('change', mockEvent);
+
+    expect(wrapper.instance().changeInput).toHaveBeenCalledWith('guestNumber', 10);
+  })
 })
