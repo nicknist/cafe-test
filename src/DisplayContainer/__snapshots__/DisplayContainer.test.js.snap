@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DisplayContainer should match the snapshot 1`] = `
+<div
+  className="resy-container"
+>
+  <Reservation
+    className="single-res"
+    key="Uncle Robbie"
+    reservation={
+      Object {
+        "date": "12-11",
+        "name": "Uncle Robbie",
+        "number": 200,
+        "time": "12:20",
+      }
+    }
+  />
+  <Reservation
+    className="single-res"
+    key="Dad Eric"
+    reservation={
+      Object {
+        "date": "12-25",
+        "name": "Dad Eric",
+        "number": 1,
+        "time": "4:00",
+      }
+    }
+  />
+</div>
+`;
