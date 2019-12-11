@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reservation = ({ reservation }) => {
+const Reservation = ({ reservation, deleteReservation }) => {
   if(!reservation) {
     return <h1>Loading...</h1>
   }
@@ -11,7 +11,10 @@ const Reservation = ({ reservation }) => {
       <p>{reservation.date}</p>
       <p>{reservation.time}pm</p>
       <p>Number of Guests: {reservation.number}</p>
-      <button className='cancel'>Cancel</button>
+      <button
+        onClick={() => deleteReservation(reservation)} 
+        className='cancel'
+      >Cancel</button>
     </div>
   )
 }

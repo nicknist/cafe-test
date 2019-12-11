@@ -21,6 +21,7 @@ exports[`App should match the snapshot 1`] = `
     </div>
     <DisplayContainer
       className="resy-container"
+      deleteReservation={[Function]}
       reservations={Array []}
     />
   </main>

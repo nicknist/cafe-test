@@ -5,17 +5,27 @@ import { shallow } from 'enzyme';
 
 describe('Reservation', () => {
   let wrapper;
+  let mockDeleteReservation;
+  let mockReservation;
 
   beforeEach(() => {
-    wrapper = shallow(<Reservation />);
+    mockReservation = {name: '1', time: '2'};
+    mockDeleteReservation = jest.fn();
+    wrapper = shallow(<Reservation reservation={mockReservation} deleteReservation={mockDeleteReservation}/>);
   })
 
   it('should match the snapshot when loading', () => {
-    expect(wrapper).toMatchSnapshot();
+    let unLoaded = shallow(<Reservation />)
+    expect(unLoaded).toMatchSnapshot();
   })
 
   it('should match snapshot when it has reservations', () => {
-    let loadedComp = shallow(<Reservation reservation={{name: '1', time: '2'}}/>)
-    expect(loadedComp).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should run deleteReservation when cancel button is clicked', () => {
+    wrapper.find('button').simulate('click');
+
+    expect(mockDeleteReservation).toHaveBeenCalledWith(mockReservation)
   })
 })

@@ -17,6 +17,7 @@ exports[`Reservation should match snapshot when it has reservations 1`] = `
   </p>
   <button
     className="cancel"
+    onClick={[Function]}
   >
     Cancel
   </button>
