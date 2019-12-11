@@ -1,5 +1,5 @@
 import React from 'React';
-import { postReservation, getReservations } from './apiCalls';
+import { postReservation, getReservations, deleteReservationFromServer } from './apiCalls';
 
 describe('API Calls', () => {
   describe('postReservation', () => {
@@ -89,6 +89,61 @@ describe('API Calls', () => {
         })
       })
       expect(getReservations()).rejects.toEqual(Error('OH NO. IT DID NOT WORK'));
+    })
+  })
+
+  describe('deleteReservationFromServer', () => {
+    let mockReservations;
+    let mockDelete;
+    let mockOptions;
+
+    beforeEach(() => {
+      mockOptions = {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      mockDelete = {
+        name: 'Wild Ben',
+        id: 7
+      }
+      mockReservations = [
+        {
+          name: 'Uncle Robbie'
+        },
+        {
+          name: 'Dad Eric'
+        },
+        {
+          name: 'Mom Amy'
+        }
+      ]
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mockReservations)
+        })
+      })
+    })
+
+    it('should run with the correct url and options', () => {
+      deleteReservationFromServer(mockDelete);
+
+      expect(window.fetch).toHaveBeenCalledWith(`http://localhost:3001/api/v1/reservations/7`, mockOptions)
+    })
+
+    it('should return the remaining reservations', () => {
+      expect(deleteReservationFromServer(mockDelete)).resolves.toEqual(mockReservations);
+    })
+
+    it('should throw an error when response is not ok', () => {
+      window.fetch = jest.fn().mockImplementation(() => {
+        return Promise.resolve({
+          ok: false
+        })
+      })
+      expect(deleteReservationFromServer(mockDelete)).rejects.toEqual(Error('Did not delete reservation'));
     })
   })
 })
