@@ -10,7 +10,12 @@ describe('Reservation', () => {
     wrapper = shallow(<Reservation />);
   })
 
-  it('should match the snapshot', () => {
+  it('should match the snapshot when loading', () => {
     expect(wrapper).toMatchSnapshot();
+  })
+
+  it('should match snapshot when it has reservations', () => {
+    let loadedComp = shallow(<Reservation reservation={{name: '1', time: '2'}}/>)
+    expect(loadedComp).toMatchSnapshot();
   })
 })

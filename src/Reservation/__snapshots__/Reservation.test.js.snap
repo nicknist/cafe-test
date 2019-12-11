@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Reservation should match the snapshot 1`] = `
+exports[`Reservation should match snapshot when it has reservations 1`] = `
+<div
+  className="single-res"
+>
+  <h2>
+    1
+  </h2>
+  <p />
+  <p>
+    2
+    pm
+  </p>
+  <p>
+    Number of Guests: 
+  </p>
+  <button
+    className="cancel"
+  >
+    Cancel
+  </button>
+</div>
+`;
+
+exports[`Reservation should match the snapshot when loading 1`] = `
 <h1>
   Loading...
 </h1>
